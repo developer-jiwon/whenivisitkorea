@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>이용약관 - 한국에가면</title>
+  <script>
+  // Supabase remote(app_config.terms_of_service_html)에서 최신 내용 가져와 덮어씀.
+  // 실패 시 로컬 HTML 그대로 fallback. `?local=1` 쿼리 시 fetch 스킵(디버그).
+  (function(){
+    if (/[?&]local=1/.test(location.search)) return;
+    var URL_B = 'https://lpnezmecezloprfqwwue.supabase.co';
+    var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxwbmV6bWVjZXpsb3ByZnF3d3VlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI0NzczNTgsImV4cCI6MjA4ODA1MzM1OH0.BShnMXzMwY1CcFPlV1pMAxQU5ptalXBo3HuZQFrGNNA';
+    var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function(){ctrl.abort();}, 8000) : null;
+    var opts = { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY } };
+    if (ctrl) opts.signal = ctrl.signal;
+    fetch(URL_B + '/rest/v1/app_config?key=eq.terms_of_service_html&select=value', opts)
+      .then(function(r){ if (timer) clearTimeout(timer); return r.json(); })
+      .then(function(rows){
+        if (Array.isArray(rows) && rows[0] && typeof rows[0].value === 'string' && rows[0].value.trim().length > 100) {
+          document.open();
+          document.write(rows[0].value);
+          document.close();
+        }
+      })
+      .catch(function(){});
+  })();
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { background: #fafbfd; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif;
+      color: #1a2332;
+      background: #fafbfd;
+      line-height: 1.7;
+      padding: calc(env(safe-area-inset-top) + 76px) calc(env(safe-area-inset-right) + 20px) calc(env(safe-area-inset-bottom) + 140px) calc(env(safe-area-inset-left) + 20px);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 22px; margin-bottom: 8px; }
+    h2 { font-size: 17px; margin: 28px 0 10px; color: #0F4C81; }
+    p, li { font-size: 14px; color: #4a5568; margin-bottom: 6px; }
+    ul { padding-left: 20px; }
+    .date { font-size: 13px; color: #a0aebf; margin-bottom: 20px; }
+    a { color: #0F4C81; }
+    .back-btn, .back-btn-bottom {
+      -webkit-tap-highlight-color: rgba(15,76,129,0.15);
+      touch-action: manipulation;
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
+      transition: transform 0.1s ease, opacity 0.1s ease;
+    }
+    .back-btn:active, .back-btn-bottom:active { transform: scale(0.96); opacity: 0.85; }
+    .back-btn {
+      position: fixed;
+      top: max(calc(env(safe-area-inset-top, 20px) + 12px), 52px);
+      left: max(calc(env(safe-area-inset-left, 0px) + 16px), 16px);
+      z-index: 1000;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      background: #fff;
+      border: 1px solid #e8ecf1;
+      border-radius: 999px;
+      color: #0F4C81;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(15,76,129,0.16);
+    }
+    .back-btn-bottom {
+      position: fixed;
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 70px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 24px;
+      background: #0F4C81;
+      border: none;
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(15,76,129,0.24);
+    }
+    .back-btn-bottom:active { transform: translateX(-50%) scale(0.96); opacity: 0.85; }
+    .back-btn:active { background: #f3f6fb; }
+    .lang-switch {
+      display: inline-flex;
+      gap: 4px;
+      background: #fff;
+      border: 1px solid #e8ecf1;
+      border-radius: 999px;
+      padding: 4px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 2px rgba(15,76,129,0.04);
+    }
+    .lang-switch button {
+      border: none;
+      background: none;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: inherit;
+      color: #6b7280;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-switch button.active {
+      background: #0F4C81;
+      color: #fff;
+    }
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+    .legal-nav { font-size: 13px; margin: 0 0 20px; }
+    .legal-nav a { margin-right: 16px; }
+  </style>
+</head>
+<body>
+  <a href="index.html" onclick="if(window.history.length>1){event.preventDefault();window.history.back();return false;}" class="back-btn"><- <span class="t-back">앱으로 돌아가기</span></a>
+
+  <div class="lang-switch" role="tablist">
+    <button type="button" data-lang="ko">한국어</button>
+    <button type="button" data-lang="en">English</button>
+  </div>
+
+  <!-- ========== 한국어 ========== -->
+  <section class="lang-section" data-lang="ko">
+    <div class="legal-nav">
+      <a href="privacy-policy.html">개인정보처리방침</a>
+      <a href="terms-of-service.html"><strong>이용약관</strong></a>
+    </div>
+
+    <h1>이용약관</h1>
+    <p class="date">시행일: 2026년 5월 1일 / 최종 개정일: 2026년 9월 1일</p>
+
+    <p>본 이용약관은 한국에가면(이하 "앱")의 이용 조건을 규정합니다. 앱을 설치하거나 이용하면 본 약관에 동의한 것으로 간주됩니다.</p>
+
+    <h2>1. 서비스 개요</h2>
+    <p>한국에가면은 한국 방문 시 필요한 항목을 체크리스트로 정리하고, 나만의 여행 영수증을 생성해주는 무료 서비스입니다.</p>
+
+    <h2>2. 이용 조건</h2>
+    <ul>
+      <li>앱은 회원가입 없이 누구나 이용할 수 있습니다</li>
+      <li>이용자는 앱을 개인적, 비상업적 목적으로만 사용해야 합니다</li>
+      <li>앱의 정상적인 운영을 방해하는 행위를 해서는 안 됩니다</li>
+      <li>앱의 콘텐츠를 무단으로 복제, 배포, 수정해서는 안 됩니다</li>
+    </ul>
+
+    <h2>3. 데이터 및 저장</h2>
+    <p>이용자가 입력한 데이터(체크리스트 선택, 메모, 가격, 일정 등)는 기기 내 로컬 저장소에만 저장됩니다. 앱을 삭제하면 모든 데이터가 영구 삭제되며, 개발자는 이를 복구할 수 없습니다.</p>
+
+    <h2>4. 요금</h2>
+    <p>앱은 무료로 제공되며, 광고를 표시하지 않고 인앱 결제를 포함하지 않습니다.</p>
+
+    <h2>5. 지적재산권</h2>
+    <p>앱의 디자인, 코드, 콘텐츠 등 모든 지적재산권은 개발자에게 있습니다. 이용자가 생성한 영수증 이미지는 이용자가 자유롭게 사용할 수 있습니다.</p>
+
+    <h2>6. 면책 조항</h2>
+    <ul>
+      <li>앱은 "있는 그대로" 제공되며, 특정 목적에의 적합성을 보증하지 않습니다</li>
+      <li>앱의 카테고리/항목 데이터는 참고용이며, 정확성을 보장하지 않습니다</li>
+      <li>앱 이용 중 발생한 데이터 손실에 대해 개발자는 책임지지 않습니다</li>
+      <li>네트워크 장애, 기기 오류 등으로 인한 서비스 중단에 대해 책임지지 않습니다</li>
+    </ul>
+
+    <h2>7. 서비스 변경 및 종료</h2>
+    <p>개발자는 사전 고지 후 앱의 기능을 변경하거나 서비스를 종료할 수 있습니다. 중요한 변경 사항은 앱 내 공지 또는 본 페이지를 통해 안내합니다.</p>
+
+    <h2>8. 약관 변경</h2>
+    <p>본 약관이 변경될 경우 앱 내 공지 또는 본 페이지를 통해 안내합니다. 변경 후에도 앱을 계속 이용하면 변경된 약관에 동의한 것으로 간주됩니다.</p>
+
+    <h2>9. 연락처</h2>
+    <ul>
+      <li>개발자: 황지원</li>
+      <li>이메일: <a href="mailto:dev.jiwonnie@gmail.com">dev.jiwonnie@gmail.com</a></li>
+    </ul>
+  </section>
+
+  <!-- ========== English ========== -->
+  <section class="lang-section" data-lang="en" lang="en">
+    <div class="legal-nav">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html"><strong>Terms of Service</strong></a>
+    </div>
+
+    <h1>Terms of Service</h1>
+    <p class="date">Effective: May 1, 2026 / Last updated: September 1, 2026</p>
+
+    <p>These Terms of Service govern your use of Korea Receipt ("App"). By installing or using the App, you agree to these terms.</p>
+
+    <h2>1. Service Overview</h2>
+    <p>Korea Receipt is a free service that helps users organize things to do when visiting Korea through a checklist and generates a personalized travel receipt.</p>
+
+    <h2>2. Terms of Use</h2>
+    <ul>
+      <li>The App can be used by anyone without registration</li>
+      <li>Users must use the App for personal, non-commercial purposes only</li>
+      <li>Users must not interfere with the normal operation of the App</li>
+      <li>Users must not copy, distribute, or modify the App's content without permission</li>
+    </ul>
+
+    <h2>3. Data & Storage</h2>
+    <p>User-entered data (checklist selections, memos, prices, schedules) is stored only in local storage on the device. Uninstalling the App permanently deletes all data, and the Developer cannot recover it.</p>
+
+    <h2>4. Pricing</h2>
+    <p>The App is provided free of charge, displays no advertising, and contains no in-app purchases.</p>
+
+    <h2>5. Intellectual Property</h2>
+    <p>All intellectual property rights of the App's design, code, and content belong to the Developer. Receipt images generated by users may be freely used by the users.</p>
+
+    <h2>6. Disclaimer</h2>
+    <ul>
+      <li>The App is provided "as is" without warranty of fitness for a particular purpose</li>
+      <li>Category and item data is for reference only; accuracy is not guaranteed</li>
+      <li>The Developer is not responsible for data loss during App use</li>
+      <li>The Developer is not responsible for service interruptions due to network failures or device errors</li>
+    </ul>
+
+    <h2>7. Service Changes & Termination</h2>
+    <p>The Developer may modify features or terminate the service after prior notice. Significant changes will be communicated through in-app notifications or this page.</p>
+
+    <h2>8. Changes to Terms</h2>
+    <p>Changes to these terms will be communicated through in-app notifications or this page. Continued use of the App after changes constitutes acceptance of the updated terms.</p>
+
+    <h2>9. Governing Law & Disputes</h2>
+    <p>These terms are governed by the laws of the Republic of Korea. Any dispute arising from use of the App will be resolved under applicable law and the jurisdiction of the courts of the Republic of Korea, without prejudice to mandatory consumer-protection rights in the user's country of residence.</p>
+
+    <h2>10. Contact</h2>
+    <ul>
+      <li>Developer / Data Protection Officer: Jiwon Hwang (황지원)</li>
+      <li>Email: <a href="mailto:dev.jiwonnie@gmail.com">dev.jiwonnie@gmail.com</a></li>
+    </ul>
+  </section>
+
+  <a href="index.html" onclick="if(window.history.length>1){event.preventDefault();window.history.back();return false;}" class="back-btn-bottom"><span class="t-back-bottom"><- 앱으로 돌아가기</span></a>
+
+  <script>
+  (function(){
+    function pick() {
+      var q = new URLSearchParams(location.search).get('lang');
+      if (q === 'ko' || q === 'en') return q;
+      try {
+        var saved = localStorage.getItem('korea-receipt:lang');
+        if (saved && saved !== 'ko') return 'en';
+        if (saved === 'ko') return 'ko';
+      } catch(e){}
+      return (navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
+    }
+    function apply(lang) {
+      document.querySelectorAll('.lang-section').forEach(function(s){
+        s.classList.toggle('active', s.getAttribute('data-lang') === lang);
+      });
+      document.querySelectorAll('.lang-switch button').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+      });
+      document.documentElement.lang = lang;
+      var backText = lang === 'ko' ? '앱으로 돌아가기' : 'Back to app';
+      document.querySelector('.t-back').textContent = backText;
+      var tbb = document.querySelector('.t-back-bottom');
+      if (tbb) tbb.textContent = '<- ' + backText;
+      try {
+        var cur = localStorage.getItem('korea-receipt:lang');
+        if (!cur) localStorage.setItem('korea-receipt:lang', lang);
+      } catch(e){}
+    }
+    document.querySelectorAll('.lang-switch button').forEach(function(b){
+      b.addEventListener('click', function(){ apply(b.getAttribute('data-lang')); });
+    });
+    apply(pick());
+  })();
+  </script>
+</body>
+</html>
